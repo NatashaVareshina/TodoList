@@ -1,0 +1,12 @@
+.todo {
+    min-width: 215px;
+    padding: 1em;
+    position: absolute;
+    font-size: 16px;
+    color: black;
+    border-radius: 5px;
+    cursor: move;
+}
+.complete {
+    text-decoration: line-through;
+}

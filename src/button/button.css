@@ -1,0 +1,25 @@
+.buttons > [class*='btn'] {
+    min-width: 100px;
+    margin: 10px;
+    height: 30px;
+    font-size: 14px;
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+    background: none;
+}
+.btn:hover {
+    color: #222222;
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+.btn__delete {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background: none;
+}.btn__delete:hover {
+    color: red;
+    outline: none;
+    cursor: pointer;
+}
