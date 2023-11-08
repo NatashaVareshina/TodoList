@@ -1,11 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
+import { TodoListContextProvider } from './context/todoListContext'
 import App from './App'
+import './index.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <App />
+    <TodoListContextProvider>
+      <App />
+    </TodoListContextProvider>
   </React.StrictMode>
-);
+)

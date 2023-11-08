@@ -7,7 +7,10 @@ export const TodoListContextProvider = ({children}) => {
         const savedTodos = localStorage.getItem("todos")
         
         if (savedTodos) {
-            return JSON.parse(savedTodos)
+            try {
+                return JSON.parse(savedTodos)
+            } catch (e) {
+            }
         }
         
         return []
