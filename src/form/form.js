@@ -18,6 +18,7 @@ export const Form = () => {
         setTodos(
             [...todos,
              {id: uuid(),
+              dataGrid: {x: 0, y: 0, w: 2.6, h: 2},
               title,
               color: randomcolor({luminosity: 'light'}),
               complete: false,}]
