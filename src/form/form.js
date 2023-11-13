@@ -15,14 +15,15 @@ export const Form = () => {
             return alert('This todo has already existed')
         }
         
-        setTodos(
-            [...todos,
-             {id: uuid(),
-              dataGrid: {x: 0, y: 0, w: 2.6, h: 2},
-              title,
-              color: randomcolor({luminosity: 'light'}),
-              complete: false,}]
-        )
+        setTodos([...todos, 
+            {id: uuid(), 
+             dataGrid: {x: 0, y: 0, w: 2.6, h: 2}, 
+             title, 
+             color: randomcolor({luminosity: 'light'}), 
+             complete: false, 
+             isDelete: false,
+            }
+        ])
     }
     
     const handleOnSubmit = e => {

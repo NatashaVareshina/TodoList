@@ -10,24 +10,18 @@ import './App.css'
 export default function App() {
   const { todos, setTodos } = useContext(TodoListContext)
   
-  const onDragCallback = (layout, 
-    oldItem, 
-    newItem, 
-    placeholder, 
-    e, 
-    element) => {
-      const newTodos = todos.map(todo => {
-        if (todo.id === element.id) {
-          return { ...todo, 
+  const newLayout = (layout) => {
+    const newTodos = todos.map(todo => {
+      return layout.map(element => {
+        if (element.i === todo.id) {
+          return {...todo, 
             dataGrid: {...todo.dataGrid, 
-              x: newItem.x, y: newItem.y}
+              x: element.x, y: element.y}
           }
         }
-        
-        return todo
-      })
-      
-      setTodos(newTodos)
+      }).filter(element => element !== undefined)[0]
+    })
+    setTodos(newTodos.filter(todo => todo.isDelete !== true))
   }
   
   return (
@@ -42,7 +36,7 @@ export default function App() {
         rowHeight={30} 
         preventCollision={true} 
         isResizable={false} 
-        onDragStop={onDragCallback}>
+        onLayoutChange={newLayout}>
           <div key='form' 
             data-grid={{x: 4.5, y: 6, w: 3, h: 3, static: true}}>
               <Form />

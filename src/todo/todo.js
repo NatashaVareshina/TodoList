@@ -13,8 +13,14 @@ export const Todo = ({todo, index}) => {
     }
 
     const handleDeleteTodo = id => {
-        setTodos(todos.filter(todo => todo.id !== id))
-    }
+        const newTodos = todos.map(todo => todo.id === id ? 
+            {...todo, 
+                isDelete: true, 
+                dataGrid: {...todo.dataGrid, 
+                    w: 0, h: 0}
+            } : todo)
+        
+        setTodos(newTodos)}
     
     return (
         <p className={`todo${todo.complete ? ' complete' : ''}`} 
