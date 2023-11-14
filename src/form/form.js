@@ -20,9 +20,8 @@ export const Form = () => {
              dataGrid: {x: 0, y: 0, w: 2.6, h: 2}, 
              title, 
              color: randomcolor({luminosity: 'light'}), 
-             complete: false, 
-             isDelete: false,
-            }
+             isComplete: false, 
+             isDelete: false,}
         ])
     }
     

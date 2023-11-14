@@ -3,7 +3,6 @@ import '/node_modules/react-grid-layout/css/styles.css'
 import { useContext } from "react"
 import { TodoListContext } from "./context/todoListContext"
 import { Form } from './form/form'
-import uuid from 'react-uuid'
 import { Todo } from './todo/todo'
 import './App.css'
 
@@ -41,11 +40,11 @@ export default function App() {
             data-grid={{x: 4.5, y: 6, w: 3, h: 3, static: true}}>
               <Form />
           </div>
-          {todos.map((todo, index) => {
+          {todos.map(todo => {
             return <div key={todo.id} 
               id={todo.id} 
               data-grid={todo.dataGrid}>
-                <Todo todo={todo} index={index} />
+                <Todo todo={todo} />
             </div>
           })}
       </ResponsiveGridLayout>

@@ -3,33 +3,37 @@ import { TodoListContext } from "../context/todoListContext"
 import { Button } from "../button/button"
 import './todo.css'
 
-export const Todo = ({todo, index}) => {
+export const Todo = ({todo}) => {
     const { todos, setTodos } = useContext(TodoListContext)
     
-    const handleComplete = (complete, id) => {
-        let newTodos = [...todos]
-        newTodos[id].complete = !complete
+    const handleIsComplete = (id, isComplete) => {
+        const newTodos = todos.map(todo => todo.id === id ? 
+            {...todo, 
+                isComplete: !isComplete,
+            } : todo
+        )
+            
         setTodos(newTodos)
     }
 
     const handleDeleteTodo = id => {
         const newTodos = todos.map(todo => todo.id === id ? 
             {...todo, 
-                isDelete: true, 
                 dataGrid: {...todo.dataGrid, 
-                    w: 0, h: 0}
-            } : todo)
+                    w: 0, h: 0}, 
+                isDelete: true,
+            } : todo
+        )
         
-        setTodos(newTodos)}
+        setTodos(newTodos)
+    }
     
     return (
-        <p className={`todo${todo.complete ? ' complete' : ''}`} 
-            key={todo.id} 
-            id={todo.id} 
+        <p className={`todo${todo.isComplete ? ' complete' : ''}`} 
             style={{backgroundColor: todo.color}} 
             onDoubleClick={e => {
                 e.preventDefault()
-                handleComplete(todo.complete, index)}}
+                handleIsComplete(todo.id, todo.isComplete)}}
         >
             <span>{todo.title}</span>
             <Button className="btn__delete" 
